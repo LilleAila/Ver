@@ -106,8 +106,8 @@ $('document').ready(function() {
             else {
               $('#' + divid).append('<span class="annendag">Om 16+ dager</span>')
             divid += 1;
-
           };
+          }
         },
         error: function() {
           console.log(':(')
