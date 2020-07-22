@@ -107,11 +107,10 @@ $('document').ready(function() {
               $('#' + divid).append('<span class="annendag">Om 16+ dager</span>')
             divid += 1;
           };
-          }
         },
         error: function() {
           console.log(':(')
-          $('#app').append('Du må la nettsiden vite hvor du er :(')
+          $('#app').text('Du må la nettsiden vite hvor du er :(')
         }
       });
     }
