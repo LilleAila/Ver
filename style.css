@@ -16,6 +16,12 @@
 }
 
 .idag {
+  color:black;
+  position:absolute;
+  right:5px;
+  top:5px;
+}
+.annen {
   color:gray;
   position:absolute;
   right:5px;
