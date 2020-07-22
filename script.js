@@ -37,9 +37,9 @@ $('document').ready(function() {
       })*/
       $.getJSON('https://api.opencagedata.com/geocode/v1/json?q=60.2975763+5.2758364&key=94d01d632a064c0ea8ad9ae4be4ee8a5', function(data) {
         console.ownlog('Test:', data);
-      }).fail(function(
+      }).fail(function() {
               console.ownlog(':(')
-             ))
+      })
       $.ajax({
         url: 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon,
         type: 'get',
