@@ -1,7 +1,7 @@
 // Import stylesheets
-//import './style.css';
+import './style.css';
 //import dependencies
-//const $ = require('jquery');
+const $ = require('jquery');
 const d = new Date();
 //console log
 console.ownlog = function() {
@@ -104,16 +104,14 @@ $('document').ready(function() {
               $('#' + divid).append('<span class="annendag">Om 15 dager</span>');
             }
             else {
-              $('#' + divid).append('<span class="annendag">Om 16+ dager</span>')
-            divid += 1;
-          };
-        },
-        error: function() {
-          console.log(':(')
-          $('#app').text('Du må la nettsiden vite hvor du er :(')
-        }
-      });
-    }
-    )
+              $('#' + divid).append('<span class="annendag">Om 16+ dager</span>');
+            }
+            divid = divid + 1;
+        })
+      }
+    });
+    ).fail(function() {
+      $('#app').text('Du må la nettsiden vite hvor du er :(')
+    })
   })();
 });
