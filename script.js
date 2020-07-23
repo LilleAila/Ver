@@ -1,3 +1,14 @@
+// Hello.
+//
+// This is JSHint, a tool that helps to detect errors and potential
+// problems in your JavaScript code.
+//
+// To start, simply enter some JavaScript anywhere on this page. Your
+// report will appear on the right side.
+//
+// Additionally, you can toggle specific options in the Configure
+// menu.
+
 // Import stylesheets
 //import './style.css';
 //import dependencies
@@ -5,8 +16,8 @@
 const d = new Date();
 //console log
 console.ownlog = function() {
-  for (var o of arguments) console.log(o);console.log('')
-}
+  for (var o of arguments) console.log(o);console.log('');
+};
 //var
 var datevalue, mnth, divid = 1;
 // Write Javascript code!
@@ -23,9 +34,9 @@ $('document').ready(function() {
     //                    watchPosition()
     navigator.geolocation.getCurrentPosition(function (position) {
       //Coordinate
-      const lat = position.coords.latitude
-      const lon = position.coords.longitude
-      console.ownlog('Lat:', lat, 'Lon:', lon)
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      console.ownlog('Lat:', lat, 'Lon:', lon);
       //getJSON
       /*$.getJSON('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon , function(data) {
         console.ownlog('Data:', data, '',
@@ -108,8 +119,8 @@ $('document').ready(function() {
             }
             divid = divid + 1;
         }
-      )}
+      );}
     });
   })();
-  })
-})
+  });
+});
