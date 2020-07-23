@@ -108,7 +108,7 @@ $('document').ready(function() {
             }
             divid = divid + 1;
         })
-      })
+      )}
     });
     });
   })();
