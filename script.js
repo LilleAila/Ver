@@ -107,9 +107,8 @@ $('document').ready(function() {
               $('#' + divid).append('<span class="annendag">Om 16+ dager</span>');
             }
             divid = divid + 1;
-        })
+        }
       )}
-    });
     });
   })();
 });
