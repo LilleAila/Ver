@@ -55,7 +55,7 @@ $('document').ready(function() {
               //$('#app').append(value.time.replace('T', ' ').replace('Z', '') + ' : ' + value.data.instant.details.air_temperature + 'C°<br/>')
               $('#app').append('<div id="' + divid + '" class="box">Klokken <b>' + datevalue.getHours() + '</b> Den <b>' + datevalue.getDate() + '/' + mnth + '</b>:<br/></div><br/><br/>');
               $('#' + divid).append('<b>' + value.data.instant.details.air_temperature + ' C°</b><br/>');
-              $('#' + divid).append('<img class="wthr-img" src="./wthr/' + 'heavysnowshowersandthunder_night' + '.svg">');
+              $('#' + divid).append('<img class="wthr-img" src="./wthr/' + symbol + '.svg">');
               if(d.getDate() == datevalue.getDate()) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
