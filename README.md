@@ -1,3 +1,3 @@
 |:--:|
 |Værmelding|
-![Vær](./wthr/clearsky_day.svg)
+|![Vær](./wthr/clearsky_day.svg)|
