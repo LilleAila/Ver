@@ -33,7 +33,7 @@ $('#selectbox').change(function() {
             break;
         //Bergen
         case 'Sandsli':
-            jqueryajax(60.294441, 5.277285, 'Sandsli')
+            jqueryajax(40.147845, -101.413633, 'Sandsli')
             break;
     }
 })
