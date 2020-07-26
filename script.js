@@ -7,8 +7,12 @@ const d = new Date();
 console.ownlog = function() {
   for (var o of arguments) console.log(o);console.log('');
 };
+//Første bokstav
+function cfl(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
 //var
-var datevalue, mnth, divid = 1, symbol;
+var datevalue, mnth, divid = 1, symbol, lat, lon, std;
 // Write Javascript code!
 
 /*fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.294388&lon=5.277333')
@@ -18,25 +22,66 @@ var datevalue, mnth, divid = 1, symbol;
   	console.ownlog(data);
 });*/
 $('document').ready(function() {
+  load()
+});
+
+function load() {
   (function () {
     //——\\
     //                    watchPosition()
     navigator.geolocation.getCurrentPosition(function (position) {
       //Coordinate
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      console.ownlog('Lat:', lat, 'Lon:', lon);
-      //getJSON
-      /*$.getJSON('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon , function(data) {
-        console.ownlog('Data:', data, '',
-        'Data.geometry.coordinates:', data.geometry.coordinates, '',
-        'Data.properties:', data.properties, '',
-        'Data.properties.timeseries:', data.properties.timeseries);
-      }).fail(function() {
-        console.log(':(')
-      })*/
+      lat = position.coords.latitude;
+      lon = position.coords.longitude;
       $.ajax({
-        url: 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + lat + '&lon=' + lon,
+        url: 'https://api.opencagedata.com/geocode/v1/json?q=' + lat + '%2C%20' + lon + '&key=94d01d632a064c0ea8ad9ae4be4ee8a5',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+            //——\\
+          std = data.results[0].components.road;
+          onload(lat, lon, std);
+        },
+        error: function() {
+            console.log(':(');
+        }
+      });
+      console.ownlog('Lat:', lat, 'Lon:', lon);
+      //onload(lat, lon, 'Her')
+  });
+  })();
+};
+
+$('#sted').click(function() {
+  opencage(prompt(cfl('Værmelding for…')))
+});
+$('#her').click(function() {
+  load()
+});
+
+function opencage(sted) {
+   //var sted = cfl(prompt('Værmelding for…'));
+    $.ajax({
+        url: 'https://api.opencagedata.com/geocode/v1/json?q=' + sted + '&key=94d01d632a064c0ea8ad9ae4be4ee8a5',
+        type: 'get',
+        dataType: 'json',
+        success: function(data) {
+            //——\\
+            console.log('Lat: ' + data.results[0].geometry.lat);
+            console.log('lng: ' + data.results[0].geometry.lng);
+            onload(data.results[0].geometry.lat, data.results[0].geometry.lng, sted);
+        },
+        error: function() {
+            console.log(':(');
+        }
+    })
+}
+
+function onload(latal, lonol, stedsnavn) {
+  $('#app').text('');
+  divid = 1;
+  $.ajax({
+        url: 'https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=' + latal + '&lon=' + lonol,
         type: 'get',
         dataType: 'json',
         success: function(data) {
@@ -44,7 +89,7 @@ $('document').ready(function() {
           'Data.geometry.coordinates:', data.geometry.coordinates, '',
           'Data.properties.timeseries:', data.properties.timeseries, '',
           'Grader C°:', data.properties.timeseries[0].data.instant.details.air_temperature + 'C°');
-
+          $('#app').html(`<h1 class="verfor">Værmelding for <b>` + cfl(stedsnavn) + `</b>.</h1>`)
           //——\\
 
           data.properties.timeseries.forEach((value, index) => {
@@ -115,6 +160,4 @@ $('document').ready(function() {
         }
       );}
     });
-  });
-  })();
-});
+}
