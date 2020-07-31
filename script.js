@@ -104,53 +104,8 @@ function onload(latal, lonol, stedsnavn) {
               if(d.getDate() == datevalue.getDate()) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
-              else if(d.getDate() + 1 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">I morgen</span>');
-              }
-              else if(d.getDate() + 2 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">I overmorgen</span>');
-              }
-              else if(d.getDate() + 3 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 3 dager</span>');
-              }
-              else if(d.getDate() + 4 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 4 dager</span>');
-              }
-              else if(d.getDate() + 5 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 5 dager</span>');
-              }
-              else if(d.getDate() + 6 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 6 dager</span>');
-              }
-              else if(d.getDate() + 7 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 7 dager</span>');
-              }
-              else if(d.getDate() + 8 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 8 dager</span>');
-              }
-              else if(d.getDate() + 9 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 9 dager</span>');
-              }
-              else if(d.getDate() + 10 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 10 dager</span>');
-              }
-              else if(d.getDate() + 11 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 11 dager</span>');
-              }
-              else if(d.getDate() + 12 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 12 dager</span>');
-              }
-              else if(d.getDate() + 13 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 13 dager</span>');
-              }
-              else if(d.getDate() + 14 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 14 dager</span>');
-              }
-              else if(d.getDate() + 15 == datevalue.getDate()) {
-                $('#' + divid).append('<span class="annendag">Om 15 dager</span>');
-              }
               else {
-                $('#' + divid).append('<span class="annendag">Om 16+ dager</span>');
+                $('#' + divid).append('<span class="annendag">Om 1+ dag(er)</span>')
               }
               divid = divid + 1;
             }
