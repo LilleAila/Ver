@@ -110,14 +110,14 @@ function onload(latal, lonol, stedsnavn) {
               if(d.getDate() == datevalue.getDate()) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
-              else if(dd(d, datevalue) + 1 == 1) {
+              else if(dd(d, datevalue) == 1) {
                 $('#' + divid).append('<span class="annendag">I Morgen</span>')
               }
-              else if(dd(d, datevalue) + 1 == 2) {
+              else if(dd(d, datevalue) == 2) {
                 $('#' + divid).append('<span class="annendag">I Overmorgen</span>')
               }
               else {
-                varabcde = dd(d, datevalue) + 1
+                varabcde = dd(d, datevalue)
                 $('#' + divid).append('<span class="annendag">Om ' + varabcde + ' dager</span>')
               }
               divid = divid + 1;
