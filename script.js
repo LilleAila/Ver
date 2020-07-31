@@ -117,7 +117,7 @@ function onload(latal, lonol, stedsnavn) {
               }
               else {
                 varabcde = ddid(d, datevalue) + 1
-                $('#' + divid).append('<span class="annendag">Om ' + varabcde + ' dag</span>')
+                $('#' + divid).append('<span class="annendag">Om ' + varabcde + ' dager</span>')
               }
               divid = divid + 1;
             }
