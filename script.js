@@ -17,7 +17,7 @@ function ddid(date1, date2) {
     return Math.round((date2-date1)/(1000*60*60*24));
 }
 //var
-var datevalue, mnth, divid = 1, symbol, lat, lon, std;
+var datevalue, mnth, divid = 1, symbol, lat, lon, std, varabcde;
 // Write Javascript code!
 
 /*fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.294388&lon=5.277333')
@@ -109,8 +109,15 @@ function onload(latal, lonol, stedsnavn) {
               if(d.getDate() == datevalue.getDate()) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
+              else if(ddid(d, datevalue) + 1 == 1) {
+                $('#' + divid).append('<span class="annendag">I Morgen</span>')
+              }
+              else if(ddid(d, datevalue) + 1 == 2) {
+                $('#' + divid).append('<span class="annendag">I Overmorgen</span>')
+              }
               else {
-                $('#' + divid).append('<span class="annendag">Om ' + ddid(d, datevalue) + ' dag(er)</span>')
+                varabcde = ddid(d, datevalue) + 1
+                $('#' + divid).append('<span class="annendag">Om ' + varabcde + ' dag</span>')
               }
               divid = divid + 1;
             }
