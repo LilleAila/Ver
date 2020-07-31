@@ -11,6 +11,11 @@ console.ownlog = function() {
 function cfl(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
+//mellom datoer
+function ddid(date1, date2) {
+    // round to the nearest whole number
+    return Math.round((date2-date1)/(1000*60*60*24));
+}
 //var
 var datevalue, mnth, divid = 1, symbol, lat, lon, std;
 // Write Javascript code!
@@ -105,7 +110,7 @@ function onload(latal, lonol, stedsnavn) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
               else {
-                $('#' + divid).append('<span class="annendag">Om 1+ dag(er)</span>')
+                $('#' + divid).append('<span class="annendag">Om ' + ddid(d, datevalue) + ' dag(er)</span>')
               }
               divid = divid + 1;
             }
