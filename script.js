@@ -1,7 +1,5 @@
-// Import stylesheets
-//import './style.css';
-//import dependencies
-//const $ = require('jquery');
+//var
+var datevalue, mnth, divid = 1, symbol, lat, lon, std, varabcde, _MS_PER_DAY, utc1, utc2;
 const d = new Date();
 //console log
 console.ownlog = function() {
@@ -12,12 +10,15 @@ function cfl(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 //mellom datoer
-function ddid(date1, date2) {
-    // round to the nearest whole number
-    return Math.round((date2-date1)/(1000*60*60*24));
+function dd(date2, date1) {
+    _MS_PER_DAY = 1000 * 60 * 60 * 24;
+
+    // Discard the time and time-zone information.
+    utc1 = Date.UTC(date1.getFullYear(), date1.getMonth(), date1.getDate());
+    utc2 = Date.UTC(date2.getFullYear(), date2.getMonth(), date2.getDate());
+
+    return Math.floor((utc2 - utc1) / _MS_PER_DAY);
 }
-//var
-var datevalue, mnth, divid = 1, symbol, lat, lon, std, varabcde;
 // Write Javascript code!
 
 /*fetch('https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=60.294388&lon=5.277333')
@@ -109,14 +110,14 @@ function onload(latal, lonol, stedsnavn) {
               if(d.getDate() == datevalue.getDate()) {
                 $('#' + divid).append('<span class="idag">I dag</span>');
               }
-              else if(ddid(d, datevalue) + 1 == 1) {
+              else if(dd(d, datevalue) + 1 == 1) {
                 $('#' + divid).append('<span class="annendag">I Morgen</span>')
               }
-              else if(ddid(d, datevalue) + 1 == 2) {
+              else if(dd(d, datevalue) + 1 == 2) {
                 $('#' + divid).append('<span class="annendag">I Overmorgen</span>')
               }
               else {
-                varabcde = ddid(d, datevalue) + 1
+                varabcde = dd(d, datevalue) + 1
                 $('#' + divid).append('<span class="annendag">Om ' + varabcde + ' dager</span>')
               }
               divid = divid + 1;
