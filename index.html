@@ -13,14 +13,19 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="apple-touch-icon" href="./bilder/clearsky_day.svg">
     <link rel="icon" href="./wthr/clearsky_day.svg">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+    <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
   </head>
-  <body>
-    <button id="her">
-      Her
+  <body class="bg-blue fg-black">
+    <button class="button" id="her" data-role="ripple">
+        Her
     </button>
-    <button id="sted">
-      Der
+    <button class="button" id="sted" data-role="ripple">
+        Der
     </button>
+    <div id='map' style='width: 90vw; height: 90vh;'></div>
     <div id="app">
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
