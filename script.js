@@ -1,5 +1,5 @@
 //var
-var datevalue, mnth, divid = 1, symbol, lat, lon, std, varabcde, _MS_PER_DAY, utc1, utc2;
+var datevalue, mnth, divid = 1, symbol, lat, lon, std, varabcde, _MS_PER_DAY, utc1, utc2, mappos, stedsnavnsted;
 const d = new Date();
 //console log
 console.ownlog = function() {
@@ -27,8 +27,40 @@ function dd(date2, date1) {
   	// Do something with your data
   	console.ownlog(data);
 });*/
+
 $('document').ready(function() {
-  load()
+  load();
+  mapboxgl.accessToken = 'pk.eyJ1IjoibGlsbGVhaWxhIiwiYSI6ImNrZGlrMHNpZDA1aGIydHJvZmo0MjltaWsifQ.sx5uS4van5M8gU3I-djMDQ';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        center: [5.277307, 60.294371], // starting position
+        zoom: 17,
+        style: 'mapbox://styles/mapbox/streets-v11'
+    });
+
+    map.addControl(new mapboxgl.NavigationControl());
+    map.addControl(new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true
+        },
+          trackUserLocation: false
+      }));
+
+      //map.addControl(new mapboxgl.FullscreenControl({container: document.querySelector('body')}));
+
+      map.scrollZoom.enable();
+      map.dragPan.enable();
+      map.dragRotate.enable();
+      map.doubleClickZoom.disable();
+      map.touchZoomRotate.enable();
+      map.touchPitch.enable();
+      map.on('click', function(e) {
+          console.log('A click event has occurred at ' + e.lngLat);
+          console.log('Lng: ' + e.lngLat.lng);
+          console.log('Lat: ' + e.lngLat.lat);
+          onload(e.lngLat.lat, e.lngLat.lng);
+          //$('#app').text(e.lngLat);
+      });
 });
 
 function load() {
@@ -84,6 +116,13 @@ function opencage(sted) {
 }
 
 function onload(latal, lonol, stedsnavn) {
+    if(stedsnavn != 0 && stedsnavn != undefined && stedsnavn != null && stedsnavn != '' && stedsnavn != ' ') {
+        stedsnavnsted = stedsnavn;
+    }
+    else {
+        stedsnavnsted = 'Lat: <b>' + latal + '</b> Lon: <b>' + lonol + '</b>';
+    }
+    //map.setCenter([latal, lonol]);
   $('#app').text('');
   divid = 1;
   $.ajax({
@@ -95,10 +134,10 @@ function onload(latal, lonol, stedsnavn) {
           'Data.geometry.coordinates:', data.geometry.coordinates, '',
           'Data.properties.timeseries:', data.properties.timeseries, '',
           'Grader C°:', data.properties.timeseries[0].data.instant.details.air_temperature + 'C°');
-          $('#app').html(`<h1 class="verfor">Værmelding for <b>` + cfl(stedsnavn) + `</b>.</h1>`)
+          $('#app').html(`<h1 class="verfor">Værmelding for ` + cfl(stedsnavnsted) + `.</h1>`)
           //——\\
 
-          data.properties.timeseries.forEach((value, index) => {
+          for (const value of data.properties.timeseries) {
             symbol = value.data.next_1_hours.summary.symbol_code;
             if(symbol != null && symbol != undefined && symbol != ' ' && symbol != '' && symbol != 0) {
               datevalue = new Date(value.time);
@@ -126,6 +165,6 @@ function onload(latal, lonol, stedsnavn) {
               return false;
             }
         }
-      );}
+      }
     });
 }
