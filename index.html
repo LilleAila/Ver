@@ -13,6 +13,7 @@
     <link href="style.css" rel="stylesheet" type="text/css">
     <link rel="apple-touch-icon" href="./bilder/clearsky_day.svg">
     <link rel="icon" href="./wthr/clearsky_day.svg">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
@@ -32,15 +33,25 @@
     <div id="myModal" class="modal">
 
       <!-- Modal content -->
-      <div class="modal-content">
+      <div class="modal-content" id="modal-map-popup">
         <span class="close">&times;</span>
-        <div id='map' style='width:75vw;height:50vh;'></div>
+        <script>
+          $('document').ready(function() {
+            $('#modal-map-popup').append(`
+             <div id='map' style='width:` +
+             (70 / 100) * window.innerWidth +
+             `px;height:` +
+             (40 / 100) * window.innerHeight +
+             `px;'></div>
+            `);
+          });
+        </script>
+        </script>
       </div>
 
     </div>
     <div id="app">
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
     <script>
       // Get the modal
