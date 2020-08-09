@@ -18,6 +18,11 @@
     <script src="https://cdn.metroui.org.ua/v4.3.2/js/metro.min.js"></script>
     <script src='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.1/mapbox-gl.css' rel='stylesheet' />
+    <script>
+      function prosent(num, number) {
+        return (num / 100) * number
+      }
+    </script>
   </head>
   <body class="bg-blue fg-black">
     <button class="button" id="her" data-role="ripple">
@@ -44,6 +49,11 @@
              (40 / 100) * window.innerHeight +
              `px;'></div>
             `);
+          });
+
+          $(window).resize(function() {
+            $('#map').css('width', prosent(70, window.innerWidth) + 'px');
+            $('#map').css('height', prosent(40, window.innerHeight) + 'px');
           });
         </script>
         </script>
